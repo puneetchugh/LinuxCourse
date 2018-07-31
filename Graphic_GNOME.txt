@@ -1,0 +1,64 @@
+#gnome-tweak-tool is used to change the display settings
+
+#command used to open File Manager from command-line
+nautilus
+
+X Windows is the last step in the list of initialization steps for a Linux OS
+
+#find out the screen resolution
+xdpyinfo | grep dim
+dimensions:    3840x1080 pixels (1016x286 millimeters)
+
+#Accessing network settings and managing connections in ubuntu
+Set IP address: 10.0.0.1 netmask: 255.255.255.0 to Wired Network Interface
+
+# man -f generates result as 'whatis' would do 
+man -f
+
+#man -k generates result as 'apropos' would do ie all man pages disussing this topic
+man -k printf
+man -k compress
+apropos compress
+apropos editor
+man -k editor
+
+#man can have many pages across multiple chapters, 
+# man -a would display them all
+#man -a printf
+
+#man <page_number> would display from the specific page
+# man 3 page
+
+#GNU info with arrows, page up and page down, q to quit, h for help, enter to select a menu
+#information is stored as nodes, each page, move between nodes using n: next, p: prev, u: move one node up
+info
+info editor
+info cpio
+
+#<topic> --help : most commands have a short description which is faster than man or info pages
+cat --help
+
+#/usr/share/doc contains package information
+#gnome-help shows information in a graphic format
+
+#yelp also used for graphical information
+yelp man : cat
+yelp man : mkdir
+
+
+#Email applications : 
+1. Internet Message Access Protocol (IMAP)
+2. Post Office Protocol (POP)
+
+#Graphical email clients 
+1. Thunderbird
+2. Evolution
+3. Claws main
+
+#Text mode email clients : 
+1. mutt
+2. mail
+
+#FileZilla : Intuitive graphical FTP client. 
+
+
