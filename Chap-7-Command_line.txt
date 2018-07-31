@@ -1,0 +1,49 @@
+If 'sudo' is not configured, use the following steps 
+
+Step 1. Type su
+Step 2. Enter root password
+Step 3. echo "<new_user> ALL=(ALL) ALL" > /etc/sudoers.d/<new_user>
+Step 4. chmod 440 /etc/sudoers.d/<new_user>
+
+Virtual Terminals: 
+
+CTRL-ALT-'corresponding function key' -> For eg : CTRL-ALT-F6 for VT 6
+Ubuntu uses VT7 for graphical env, text logins are enabled on unused VTs 
+
+Switch off the Graphical Desktop
+sudo systemctl stop gdm  (or sudo telinit 3)
+
+Restart it 
+sudo systemctl start gdm  (or sudo telinit 5)
+
+#Rebooting & Shutting down
+sudo shutdown -h 10:00 "Shutting down for scheduled maintenance."
+halt and poweroff commands issue shutdown -h
+reboot used shutdown -r
+
+#Finding where the bin is installed
+which gvim
+/usr/bin/gvim
+
+whereis gvim
+gvim: /usr/bin/gvim /usr/share/man/man1/gvim.1.gz
+
+# tree command
+Use tree command to get a bird's-eye view of the filesystem tree
+tree
+
+#Create a hard link
+ln actual_file link_file (actual_file already exists)
+
+#Symbolic link are create with -s
+ln -s actual_file link_file
+
+#Changing directory
+Use cd to change directory.
+cd - will take you to previous directory
+
+#Use pushd & popd if you want the list of previous accessed directories to be remembered
+
+#Interactively deleting 
+rm -i
+
