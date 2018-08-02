@@ -1,0 +1,31 @@
+
+chmod is used to assign read, write, execute permissions to users:
+
+U - User
+G - Group
+O - Others
+
+ U   G   O
+rwx rwx rwx
+421 421 421
+ 7   7   7
+
+
+#Assign permission to all the users
+chmod +r <filename> 
+chmod a+r <filename>
+chmod ugo+r <filename>
+
+#Assign permission to one or two users
+chmod ug+w <filename>
+chmod g+x <filename>
+chmod o+r <filename>
+
+#Assign more than one permission 
+chmod u+rwx <filename>
+chmod uo+rx <filename>
+
+
+#Assign permissions using octet
+chmod 770 <filename> #all permissions to user and group
+chmod 606 <filename> #write and execute permissions to user and others
