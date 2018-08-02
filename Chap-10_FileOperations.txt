@@ -1,0 +1,90 @@
+#Mount a partition 
+#mount /dev/sda5 to /home
+mount /dev/sda5 /home
+
+#Unmount /home
+unmount /home
+
+#See all mounts 
+mount
+
+#Show information about all mounted filesystem
+df -Th
+
+#Filesystem could be spread on multiple network nodes
+#NFS daemons and other system servers are started using the following command
+sudo systemctl start nfs
+sudo systemctl restart nfs
+sudo systemctl enable nfs
+
+#For the filesystem to be mounted automatically when the system comes up into a multi-user mode
+/etc/fstab
+
+#Each user has a home directory under /home
+#/root directory on the modern Linux system is no more than the home directory
+
+#You can create groups and then have them under the group under home
+#Like /home/faculty/
+#Like /home/staff/
+
+# The /bin directory contains executable used to boot the system or in single-user mode and essential commands required by all system users
+
+
+# /sbin is intended for essential binaries related to system admin, such as fsck and shutdown
+
+#/usr/bin and /bin are actually just symbolically linked
+#/user/sbin and /sbin are also symbolically linked
+
+#/proc filesystem contains virtual files (only exists in memory) that permit viewing constantly varying kernel data. These files and directories mimic kernel structures and configurations information
+#It doesn't contain the real files, but runtime system info 
+
+#/dev directory contains device nodes, these are pseudo-file used by most hardware and software devices, except for network devices 
+#These are files created by udev
+#
+#    /dev/sda1 (first partition on the first hard disk)
+#    /dev/lp1 (second printer)
+#    /dev/dvd1 (first DVD drive).
+
+#/var (variable) filesystem contains the content whose size and content changes like 
+#/var/log
+#/var/lib
+#/var/spool
+#/var/tmp
+#/var/ftp
+#/var/www
+
+#/etc directory is the home for the system configuration files
+#/etc also contains some script files, but all the configuration files are system wide and only superuser can modify them
+
+#/boot files contains the files required for booting including GRUB (Grand Unified Bootloader)
+
+#/lib and /lib64 contains files for application programs in /bin and /sbin. 
+#These file names start with lib or ld
+#most of them are dynamically loaded libraries or shared librairies or shared objects (.so)
+
+#Removable media go under /media , /mnt or modern versions under /run
+
+
+#/opt -> Optional application software packages
+#/sys -> virtual pseudo-filesystem giving info about system & hardware. Can be used to alter system parameters and for debugging purposes
+#/usr -> Multi-user applications, utilities and data
+
+#diff is used to compare files and directories
+#diff -c strings.xml strings.xml_1
+#diff -q strings.xml strings.xml_1 #Be quiet and just tell the two files are different
+
+#diff3 is used to compare 3 files at one time
+
+#diff -Nur originalfile newfile > patchfile
+
+#dd is used for copying and also performing some operations on the file 
+# The following two commands are about copying /etc/group file to /tmp/GROUP and converts the text to uppercase conv=ucase
+dd if=/etc/group of=/tmp/group
+dd if=/tmp/group of=/tmp/GROUP conv=ucase
+
+#rsync is used for copying data. It can be used to synchronize entire directory tree
+#rsync avoids unecessary copy and save time as it copies only the parts of files that have actually changed and its fast
+#rsync can copy files over network as well using target:path and target is of the form [user@]host
+#rsych is very efficient copying one directory tree to another because only the differences are transmitted over the network
+
+
