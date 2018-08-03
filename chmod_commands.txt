@@ -28,4 +28,7 @@ chmod uo+rx <filename>
 
 #Assign permissions using octet
 chmod 770 <filename> #all permissions to user and group
-chmod 606 <filename> #write and execute permissions to user and others
+chmod 606 <filename> #write and execute permissions to user and others
+
+#Copy file permissions from one user to others
+chmod ug=o <filename>
