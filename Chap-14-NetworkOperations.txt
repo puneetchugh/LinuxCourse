@@ -1,0 +1,120 @@
+#Introduction to Networking
+
+A network is a group of computers and computing devices connected together through communication channels such as cables or wireless media. the connected computers may be located in the same geographical area or spread across the world
+
+#IP addresses
+Devices attached to have a network must have at least one unique network address identifider know as IP address. 
+
+#IPv4 address has 32 bit addresses divided into 4 octets(bytes)
+There are only 4.3 billion unique addresses available
+
+#IPv6 uses 128 bit addresses that was used to overcome the limitations of IPv4 addresses
+There can be 3.4x 10 power 32 unique addresses
+
+#IPv4 addresses
+IPv4 addresses are divided into Network Id (NetID) and Host ID.
+They are represented as octets.
+
+Example:
+IP address →            172  .          16  .          31  .         46
+Bit format →         10101100.       00010000.      00011111.     00101110
+
+There are 3 classes A,B,C,D,E 
+
+Class A,B,C actually classified into two parts : NetId and HostId
+Class D is used for special multicast purpose 
+Class E is reserved for future use
+
+Class A
+NetId - 8 bits - Starts with 0xxxxxxx - 126 (128-2) addresses - the addresses 00000000 and 01111111 are reserved
+HostId - 24 bits - 16 million hosts
+All 1's in NetId are part of the loop back addresses 
+Each NetId has 16 million hosts
+Range : 1.x.x.x -> 1.0.0.1 - 1.255.255.254
+	2.x.x.x -> 2.0.0.1 - 2.255.255.254
+	   .          .             .
+           .          .             .
+           .          .             . 
+	126.x.x.x->126.0.0.1 - 126.255.255.254
+	127.x.x.x-> loopback or localhost addresses : 127.0.0.1 is a loopback address
+
+Class B
+NetId - 16 bits - Starts with 10 - There are overall 2power14 netids
+HostId - 16 bits - 65,536 host ids
+All 1's in NetId are part of loopback addressses
+Each NetId has 65,536 addresses
+Range : 128.0.x.x -> 128.0.0.1 - 128.0.255.254 (128.0.0.0 and 128.255.255.255 are broadcast/multicast addresses)
+	129.0.x.x -> 129.0.0.1 - 129.0.255.254
+	     .            .
+             .            .
+	191.255.x.x -> 191.255.255.254
+
+Class C    
+NetId - 24 bits - Starts with 110
+HostId - 8 bits - 256 addresses
+Each NetId has 256 addresses
+Range : 192.0.0.x -> 192.0.0.1 - 192.0.0.254
+	193.0.0.x -> 193.0.0.1 - 193.0.0.254
+	223.0.0.x -> 223.0.0.1 - 223.0.0.254
+
+Class D - Multicast address
+NetId - Starts with 1110
+Range: 224.0.0.0 - 239.255.255.255
+
+Class E - Reserved
+NedId - Starts with 1111
+Range : 240.0.0.0 - 255.255.255.255
+
+
+#hostname gives you system's hostname
+hostname
+ubuntu-32316-pchugh
+
+#localhost is associated with the IP address 127.0.0.1
+
+#Network Configuration files are located in /etc/network
+#nmtui is gui utility for network
+#nmcli cli utility for network
+
+#ifconfig or /sbin/ifconfig can be used to see the network interfaces
+
+#/sbin/ip addr show
+#/sbin/ip route show
+
+#ping is used to check whether or not a machine attached to the network can receive and send data; i.e., 
+#it confirms that the remote host is online and is responding
+
+#ip routes
+route –n or ip route
+route add -net address or ip route add 
+route del -net address or ip route del
+
+#traceroute helps isolate the issues with the hops.
+traceroute <address>
+
+traceroute google.com
+traceroute to google.com (172.217.12.14), 30 hops max, 60 byte packets
+ 1  172.28.24.1 (172.28.24.1)  32.764 ms  32.800 ms  32.788 ms
+ 2  10.254.254.1 (10.254.254.1)  2.033 ms  2.133 ms  2.220 ms
+ 3  67.134.102.113 (67.134.102.113)  3.083 ms  3.070 ms  3.155 ms
+ 4  dvr-edge-15.inet.qwest.net (65.157.106.153)  4.646 ms  4.812 ms  4.980 ms
+ 5  72.164.247.142 (72.164.247.142)  5.034 ms  5.022 ms  5.380 ms
+ 6  108.170.252.209 (108.170.252.209)  6.399 ms  5.675 ms 108.170.252.193 (108.170.252.193)  4.972 ms
+ 7  216.239.49.43 (216.239.49.43)  5.116 ms  4.233 ms  4.477 ms
+ 8  den02s02-in-f14.1e100.net (172.217.12.14)  4.974 ms  4.234 ms  4.061 ms
+
+ethtool eno1
+ethotool eth0
+ifconfig
+
+tcpdump 
+netstat - displays all active connections and routing tables
+mtr - combines ping and traceroute
+nmap - Scans open ports on a network. Useful for security analysis
+
+#Change system hostname 
+sudo hostname puneet_chugh
+
+#Make new username permanent
+sudo -H gedit /etc/hostname 
+sudo service hostname start
