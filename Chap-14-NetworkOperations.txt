@@ -118,3 +118,27 @@ sudo hostname puneet_chugh
 #Make new username permanent
 sudo -H gedit /etc/hostname 
 sudo service hostname start
+
+#text-based web browsers
+w3m
+lynx
+
+#Non-graphical browsers
+wget <url>
+
+curl <url> - You can also obtain information about the source code being used.
+curl -o saved.html http://www/linuxfoundation.org
+wc -c saved.html
+
+#ftp clients
+ftp
+sftp
+ncftp
+
+#ssh - secure shell
+Cryptographic network protocol used for secure data communication
+Access a remote system and other secure services between two devices on network
+
+#scp - secure copy between two networked hosts
+scp <localfile> <user@remotesystem>:/home/user/
+
