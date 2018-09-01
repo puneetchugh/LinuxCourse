@@ -1,0 +1,111 @@
+
+Since more than one users can be logged in at one point in Linux, so to find out the user, use whoami
+#whoami
+
+#who -a will give detailed information
+
+1. All Linux users are assigned a unique User ID (uid) which is just an integer;
+2. normal users start with a uid of 1000 or greater
+3. Linux uses groups to organize users. Groups are collections of accounts with certain shared permissions.
+4. By default, every user belongs to a default or primary group
+5. Users have one or more group IDs including a default one which is the same as the user ID.
+6. These numbers are associated through the files /etc/passwd & /etc/group
+7. Permissions on various files and directories can be modified at the group level
+
+Adding a new user
+#sudo /usr/sbin/useradd <username>
+#sudo useradd <username>
+
+id on command line without any arguments would give you the information of the current user 
+#id
+
+Adding a group
+#sudo /usr/sbin/groupadd <groupname>
+Deleting a group
+#sudo /usr/sbin/groupdel <groupname>
+
+Adding a user to existing group is done using usermod (-a option would make usermod append more groups to already existing)
+# sudo /usr/sbin/usermod -a -G <groupname> <username> 
+
+Check the group a user belongs to 
+#groups <username>
+
+pchugh@ubuntu-pchugh:~/LinuxCourse$ groups pchugh
+pchugh : pchugh adm cdrom sudo dip plugdev lxd lpadmin sambashare docker
+
+Removing a user from group(s). In this command with -G, only the mentioned groups would the user be attached to
+#sudo /usr/sbin/usermod -G <groupname> <username>
+
+User account is very powerful with the highest priviledges.
+Linux calls this account as -> superuser account
+Other OS calls it administrator
+sudo can be used to assign more limited priviledges to user accounts on a 1. temporary basis 2. for a specific subset of commands
+
+su and sudo can be used to get the highes priviledges. 
+Granting priviledges using sudo is less dangerous than su. sudo is preferred. 
+
+sudo configuration files are stored in the /etc/sudoers file and /etc/sudoers.d/ 
+
+Files in the /etc directory define global settings for all users, 
+However, initialization files in the user's home directory can include and/or override the global settings
+The startup files can do anything user would like to do in every command shell like 
+	Customizing the prompt
+	Defining command-line shortcut and aliases
+	Setting the default text editor
+	Setting the path for where to find executable programs
+
+When you first login to Linux, /etc/profile is read and evaluated after which the following files are searched in the listed order
+1. ~/.bash_profile
+2. ~/.bash_login
+3. ~/.profile
+
+But everytime a new shell is created, only ~/.bashrc file is checked 
+
+Alias can be created for commands which are easier to remember
+ 	alias aliasname='commands' 
+For example : Creating an alias for gvim as open in ~/.bashrc file
+	alias open='gvim'
+
+Environment variables are spectific values which are utilized by the command shell, such as bash or other utilities
+Use the following commands to see environment variables 
+#set
+#env
+#export
+
+By default, variables created within a script are only available to the current shell. Child process (sub-shells) won't have the access to values that have been set or modified
+For making the new variable available to child shell also, use export 
+#export VARIABLE=value
+OR
+#VARIABLE=value
+#export VARIABLE
+
+To permanently add the variable 
+1. Edit ~/.bashrc and add the line 
+#export VARIABLE=value
+2. Type 
+#source ~/.bashrc
+
+#echo $HOME tells you the users home directory
+#echo $HOME
+
+cd (without arguments), cd ~, cd $HOME are same statements that will take you to user's home directory
+
+PATH is an ordered list of directories which is scanned when a command is given to find the appropriate program or script to run
+All paths are separated by colons (:), 
+Null (empty) directory name indicates the current directory at any given time
+
+:path1:path2 (before colon empty is considered as null which is current directory)
+
+Prompt Statement (PS) is used to customize your prompt string in your terminal windows to display the information you want
+#echo $PS1
+\u - User name
+\h - Host name
+\w - Current working directory
+\! - History number of this command
+\d - Date
+
+#PS1='\u@\n:\w'
+pchugh#ubuntu-32316-pchugh:Fri Aug 31~>
+
+
+
