@@ -86,5 +86,25 @@ dd if=/tmp/group of=/tmp/GROUP conv=ucase
 #rsync avoids unecessary copy and save time as it copies only the parts of files that have actually changed and its fast
 #rsync can copy files over network as well using target:path and target is of the form [user@]host
 #rsych is very efficient copying one directory tree to another because only the differences are transmitted over the network
+rsync Chap-10_FileOperations.txt pchugh@ubuntu-32316-pchugh:~/
+
+#Compressing data
+gzip : most commonly used utility : works on only single file : Use 'gzip -d' to decompress
+bzip2 : produces files signnificantly smaller than those produced by gzip : works on only single file : Use 'bzip2 -d' to decompress
+xz : most space efficient utility
+zip : often required to examine and decompress archives from other OS
+
+zip -r zip_file.zip Chap-5_Graphical_GNOME.txt Chap-7-Command_line.txt
+unzip zip_file.zip
+
+tar xvf my_tar.tar #Extract all directories
+tar zvcf my_tar.tar.gz my_tar #Create the archive and use gzip to compress
+tar jcvf my_tar.tar.bz2 my_tar #Create the archive and use bz2 to compress
+tar Jcvf my_tar.tar.xz my_tar #Create the archive and use xz to compress
+tar xvf my_tar.tar.gz
+
+$ tar cvf mydir.tar mydir ; gzip mydir.tar
+$ gunzip mydir.tar.gz ; tar xvf mydir.tar
+
 
 
